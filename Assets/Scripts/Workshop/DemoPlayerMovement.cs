@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,11 @@ public class DemoPlayerMovement : MonoBehaviour
     public float JumpStrength;
     public GameObject RespawnPoint;
     private bool canJump;
+    public float maxHealth, health;
+
+    public static event Action onPlayerDamaged;
+    public static event Action onPlayerDeath;
+
 
     // Start is called before the first frame update
     void Start()
@@ -58,6 +64,14 @@ public class DemoPlayerMovement : MonoBehaviour
         else if(collision.collider.gameObject.tag == "danger")
         {
             Respawn();
+             health -= 1;
+            onPlayerDamaged?.Invoke();
+
+            if(health <= 0) {
+                health = 4;
+                Debug.Log("you're dead!");
+                onPlayerDeath?.Invoke();
+            }
         }
     }
 
@@ -67,4 +81,5 @@ public class DemoPlayerMovement : MonoBehaviour
         transform.position = RespawnPoint.transform.position;
         PlayerRB.velocity = Vector2.zero;
     }
+
 }
