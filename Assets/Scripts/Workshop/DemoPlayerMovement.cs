@@ -59,7 +59,7 @@ public class DemoPlayerMovement : MonoBehaviour
         if(collision.collider.gameObject.tag == "floor")
         {
             // Allow the player to jump again once they reach the ground
-            canJump = true;
+            canJump = false;
         }
         else if(collision.collider.gameObject.tag == "danger")
         {
