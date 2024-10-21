@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 
 
 public class timeManager : MonoBehaviour
@@ -16,6 +17,7 @@ public class timeManager : MonoBehaviour
     private int counter = 0;
     public bool ActivateTimer = false;
     public AudioSource musicSource;
+    
 
     public AudioClip timeTheme;
     // Start is called before the first frame update
@@ -52,7 +54,12 @@ public class timeManager : MonoBehaviour
             print(currentAmount);
             healthBar.sprite = spriteChoices[counter];
             if(counter == 7) {
-                counter = -1;
+                
+            }
+        } else {
+            if(currentAmount <= 0) {
+                
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
             }
         }
     }

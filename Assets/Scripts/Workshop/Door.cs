@@ -1,37 +1,38 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+public class Door : MonoBehaviour
+{
 
-public class key : MonoBehaviour {
-
-    [SerializeField]
+     [SerializeField]
     private GameObject pickUpText;
-    public AudioSource keySound;
-    public GameObject key2;
-    public bool hasKey = false;
+    public AudioSource paperSound;
+    public AudioSource paperSound2;
+    public GameObject note2;
+    
+    public key keyy;
 
 
     private bool pickUpAllowed;
 
-	// Use this for initialization
-	private void Start () {
+    void Start()
+    {
         pickUpText.gameObject.SetActive(false);
-        key2.SetActive(false);
+        
+    }
 
-
-	}
-	
-	// Update is called once per frame
-	private void Update () {
-        if (pickUpAllowed && Input.GetKeyDown(KeyCode.E)) {
-            keySound.Play();
+    // Update is called once per frame
+    void Update()
+    {
+         if (pickUpAllowed && Input.GetKeyDown(KeyCode.E) && keyy.hasKey) {
+            paperSound.Play();
             PickUp();
             
-            
     } 
-}
+
+        
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -53,10 +54,9 @@ public class key : MonoBehaviour {
 
     private void PickUp()
     {
-        key2.SetActive(true);
-        hasKey = true;
-        Destroy(gameObject);
         
+        Destroy(gameObject);
+       
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
     }
-
 }

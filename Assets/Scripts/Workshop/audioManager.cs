@@ -11,10 +11,13 @@ public class audioManager : MonoBehaviour
     [SerializeField] AudioSource musicSource;
     [SerializeField] AudioSource SFXSource;
     [SerializeField] AudioSource musicSource2;
+    [SerializeField] AudioSource musicSource3;
+
     public GameObject ObjectMusic;
     public Slider musicSlider;
     public AudioClip trainSound;
     public AudioClip menuSong;
+    public AudioClip overMusic;
     
     private void Start() {
         
@@ -43,6 +46,13 @@ public class audioManager : MonoBehaviour
     {
         
          musicSource2.clip = trainSound;
+        
+    }
+
+    if (currentScene.name == "gameOver")
+    {
+        
+         musicSource3.clip = overMusic;
         
     }
    
