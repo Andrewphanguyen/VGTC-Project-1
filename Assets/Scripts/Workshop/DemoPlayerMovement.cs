@@ -10,17 +10,18 @@ public class DemoPlayerMovement : MonoBehaviour
     public float Speed;
     public float JumpStrength;
     public GameObject RespawnPoint;
-    private bool canJump;
     public float maxHealth, health;
+  
 
     public static event Action onPlayerDamaged;
     public static event Action onPlayerDeath;
 
-
+    audioManager audioManager;
     // Start is called before the first frame update
     void Start()
     {
-        canJump = false;
+        
+        
     }
 
     // Update is called once per frame
@@ -30,22 +31,22 @@ public class DemoPlayerMovement : MonoBehaviour
         {
             MoveSideways(Vector2.right);
             PlayerSR.flipX = true;
+          
+            
         }
         else if(Input.GetKey(KeyCode.LeftArrow))
         {
             MoveSideways(Vector2.left);
             PlayerSR.flipX = false;
+            
+
         }
         else 
         {
             MoveSideways(Vector2.zero);
         }
 
-        if(Input.GetKeyDown(KeyCode.UpArrow) && canJump)
-        {
-            PlayerRB.velocity = new Vector2(PlayerRB.velocity.x, JumpStrength);
-            canJump = false;
-        }
+        
     }
 
     // Sets the player's veolicty only in the sideways direction
@@ -59,7 +60,7 @@ public class DemoPlayerMovement : MonoBehaviour
         if(collision.collider.gameObject.tag == "floor")
         {
             // Allow the player to jump again once they reach the ground
-            canJump = false;
+           
         }
         else if(collision.collider.gameObject.tag == "danger")
         {
@@ -81,5 +82,11 @@ public class DemoPlayerMovement : MonoBehaviour
         transform.position = RespawnPoint.transform.position;
         PlayerRB.velocity = Vector2.zero;
     }
+
+    private void Awake() {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<audioManager>();
+    }
+
+    
 
 }

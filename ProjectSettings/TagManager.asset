@@ -7,6 +7,9 @@ TagManager:
   - floor
   - danger
   - player
+  - Audio
+  - GameMusic
+  - MusicSlider
   layers:
   - Default
   - TransparentFX

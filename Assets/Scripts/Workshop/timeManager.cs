@@ -2,25 +2,48 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Audio;
+
 
 public class timeManager : MonoBehaviour
 {
 
     public Image healthBar;
+    public Image text;
     public float healthAmount = 60.0f;
     public List<Sprite> spriteChoices;
     private float currentAmount = 60.0f;
     private int counter = 0;
+    public bool ActivateTimer = false;
+    public AudioSource musicSource;
+
+    public AudioClip timeTheme;
     // Start is called before the first frame update
     void Start()
     {
-        
+        healthBar.enabled = false;
+        text.enabled = false;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        healthAmount -= Time.deltaTime;
+
+         if(ActivateTimer && healthAmount == 60.0f) {
+            musicSource.Play();
+            healthBar.enabled = true;
+            text.enabled = true;
+        }
+
+        if(ActivateTimer) {
+            healthAmount -= Time.deltaTime;
+            
+            
+        }
+
+       
+        
         
         
         if(healthAmount + 10.0 <= currentAmount) {
@@ -28,7 +51,7 @@ public class timeManager : MonoBehaviour
             currentAmount = healthAmount;
             print(currentAmount);
             healthBar.sprite = spriteChoices[counter];
-            if(counter == 3) {
+            if(counter == 7) {
                 counter = -1;
             }
         }
