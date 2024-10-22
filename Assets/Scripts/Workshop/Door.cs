@@ -10,7 +10,7 @@ public class Door : MonoBehaviour
     public AudioSource paperSound;
     public AudioSource paperSound2;
     public GameObject note2;
-    
+    public audioManager trainSound;
     public key keyy;
 
 
@@ -58,5 +58,6 @@ public class Door : MonoBehaviour
         Destroy(gameObject);
        
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
+        trainSound.SFXSource.mute = true;
     }
 }

@@ -9,7 +9,7 @@ public class audioManager : MonoBehaviour
 {
     public static audioManager instance;
     [SerializeField] AudioSource musicSource;
-    [SerializeField] AudioSource SFXSource;
+    public AudioSource SFXSource;
     [SerializeField] AudioSource musicSource2;
     [SerializeField] AudioSource musicSource3;
 
@@ -56,6 +56,7 @@ public class audioManager : MonoBehaviour
     if (currentScene.name == "gameOver")
     {
          musicSource.mute = true;
+         SFXSource.clip = overMusic;
          musicSource3.clip = overMusic;
         
     } 

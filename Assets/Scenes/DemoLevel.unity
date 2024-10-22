@@ -1713,7 +1713,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: b9614bad292766c47b85d25560856328, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.241
+  m_Volume: 0.076
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -2819,6 +2819,7 @@ MonoBehaviour:
   paperSound: {fileID: 1056828547}
   paperSound2: {fileID: 0}
   note2: {fileID: 0}
+  trainSound: {fileID: 1155791435}
   keyy: {fileID: 1634774267}
 --- !u!61 &1274131858
 BoxCollider2D:
