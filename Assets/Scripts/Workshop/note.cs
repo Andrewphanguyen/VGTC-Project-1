@@ -14,7 +14,7 @@ public class note : MonoBehaviour
     public AudioSource paperSound2;
     public GameObject note2;
     public timeManager script;
-
+    private bool active;
 
 
     private bool pickUpAllowed;
@@ -37,7 +37,8 @@ public class note : MonoBehaviour
            
     } 
 
-         if(Input.GetKeyDown(KeyCode.M)) {
+         if(Input.GetKeyDown("space") && active || Input.GetMouseButtonDown(0) && active) {
+                active = false;
                 note2.SetActive(false);
                 paperSound2.Play();
                 script.ActivateTimer = true;
@@ -66,7 +67,7 @@ public class note : MonoBehaviour
     {
         
         note2.SetActive(true);
-       
+        active = true;
         
     }
 }

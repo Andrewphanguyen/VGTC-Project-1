@@ -469,10 +469,15 @@ MonoBehaviour:
   musicSource: {fileID: 974234079}
   SFXSource: {fileID: 794823090}
   musicSource2: {fileID: 974234079}
+  musicSource3: {fileID: 974234079}
   ObjectMusic: {fileID: 0}
   musicSlider: {fileID: 0}
   trainSound: {fileID: 8300000, guid: 152bc0106ad2eb847b327311788d1d05, type: 3}
   menuSong: {fileID: 8300000, guid: 8f705fb92a8e007418cbbf001614ebef, type: 3}
+  overMusic: {fileID: 0}
+  ps: {fileID: 0}
+  noteMusic: {fileID: 0}
+  hasPlayed: 0
 --- !u!4 &787189522
 Transform:
   m_ObjectHideFlags: 0

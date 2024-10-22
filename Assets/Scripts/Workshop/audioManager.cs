@@ -18,7 +18,9 @@ public class audioManager : MonoBehaviour
     public AudioClip trainSound;
     public AudioClip menuSong;
     public AudioClip overMusic;
-    
+    public pauseMenu ps;
+    public timeManager noteMusic;
+    public bool hasPlayed = false;
     private void Start() {
         
         
@@ -46,14 +48,33 @@ public class audioManager : MonoBehaviour
     {
         
          musicSource2.clip = trainSound;
+        //SFXSource.mute = false;
+        hasPlayed = true;
         
     }
 
     if (currentScene.name == "gameOver")
     {
-        
+         musicSource.mute = true;
          musicSource3.clip = overMusic;
         
+    } 
+
+    if(currentScene.name == "MainMenu" && hasPlayed) {
+        SFXSource.mute = true;
+        musicSource.clip = menuSong;
+        musicSource.mute = false;
+        
+    }
+
+    
+
+    if(ps.GameIsPaused && currentScene.name == "DemoLevel") {
+        SFXSource.mute = true;
+        noteMusic.musicSource.mute = true;
+    } else {
+        SFXSource.mute = false;
+        noteMusic.musicSource.mute = false;
     }
    
     
@@ -67,8 +88,12 @@ public class audioManager : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(instance);
         } else if(currentScene.name == "DemoLevel") {
+            
             DontDestroyOnLoad(instance);
-        }
+        } else if(currentScene.name == "gameOver") {
+            
+            DontDestroyOnLoad(instance);
+        } 
            
         else
         {
